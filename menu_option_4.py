@@ -1,7 +1,5 @@
 __author__ = 'Dreyke Boone'
 
-# TODO add exception handling
-
 import sqlite3
 
 def delete_row():

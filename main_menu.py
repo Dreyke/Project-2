@@ -24,6 +24,7 @@ while menu != 7:
 
     if menu == 1:
         menu_option_1.create_db()
+        break
     elif menu == 2:
         menu_option_2.add_row()
     elif menu == 3:

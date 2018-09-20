@@ -10,11 +10,11 @@ def display_data():
     print("Here is all the data from the database\n")
 
     try:
-
         connect = sqlite3.connect(db_file)
         c = connect.cursor()
 
         c.execute("SELECT id, title, retail_price, developer, inventory, platforms, release_date FROM game_products")
+
         for row in c:
             print("\nID = ", row[0])
             print("Game Title = ", row[1])

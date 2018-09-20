@@ -19,7 +19,7 @@ def create_db():
     c = connect.cursor()
 
     # creating game products table with 7 columns and setting the first column as the
-    c.execute('''CREATE TABLE {tn} 
+    c.execute('''CREATE TABLE IF NOT EXISTS {tn} 
                 ({cn1} INTEGER PRIMARY KEY,
                 {cn2} VARCHAR(25) NOT NULL,
                 {cn3} DOUBLE NOT NULL,
