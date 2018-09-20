@@ -22,7 +22,7 @@ def create_db():
 
     # creating game products table with 7 columns and setting the first column as the
     c.execute('''CREATE TABLE {tn} 
-                ({cn1} INT PRIMARY KEY,
+                ({cn1} INTEGER PRIMARY KEY,
                 {cn2} VARCHAR(25),
                 {cn3} DOUBLE,
                 {cn4} VARCHAR(25),

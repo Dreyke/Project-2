@@ -18,15 +18,14 @@ menu = int(input(""
                  "3. Update data\n"
                  "4. Delete data\n"
                  "5. Display all data\n"
-                 "6. Search for data\n"
-                 "7. Exit\n\n"))
+                 "6. Search for data\n"))
 
 if menu == 1:
     menu_option_1.create_db()
 elif menu == 2:
-    pass
+    menu_option_2.add_row()
 elif menu == 3:
-    pass
+    menu_option_3.update_row()
 elif menu == 4:
     pass
 elif menu == 5:
