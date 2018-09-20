@@ -7,11 +7,11 @@ def update_row():
 
     db_file = 'products_db.sqlite' # name of database file
 
-    update = input("Please confirm you want to update data: (y/n)")
+    row_selection = ''
 
-    while update != 'n':
+    while row_selection != 'q':
 
-        row_selection = input("Enter a game title to display and update information: ")
+        row_selection = input("Enter a game title to display and update information or press q to quit: ")
 
         try:
             # connecting to database file
@@ -46,21 +46,27 @@ def update_row():
                 if selection == 'title':
                     updated_title = input("New game title: ")
                     c.execute("UPDATE game_products SET title=? WHERE title=?",(updated_title, row_selection,))
+                    connect.commit()
                 elif selection == 'retail price':
                     updated_price = input("New retail price: ")
                     c.execute("UPDATE game_products SET retail_price=? WHERE title=?", (updated_price, row_selection,))
+                    connect.commit()
                 elif selection == 'developer':
                     updated_developer = input("New developer: ")
                     c.execute("UPDATE game_products SET developer=? WHERE title=?", (updated_developer, row_selection,))
+                    connect.commit()
                 elif selection == 'inventory':
                     updated_inventory = input("Updated inventory: ")
                     c.execute("UPDATE game_products SET inventory=? WHERE title=?", (updated_inventory, row_selection,))
+                    connect.commit()
                 elif selection == 'platform':
                     updated_platform = input("Updated platforms: ")
                     c.execute("UPDATE game_products SET platforms=? WHERE title=?", (updated_platform, row_selection,))
+                    connect.commit()
                 elif selection == 'release date':
                     updated_release = input("Updated release date: ")
                     c.execute("UPDATE game_products SET release_date=? WHERE title=?", (updated_release, row_selection,))
+                    connect.commit()
                 else:
                     print("Error. Please enter a valid entry.")
 
@@ -68,7 +74,6 @@ def update_row():
                 exit = input("Do you want add more data? (Y/N)")
 
                 if exit == 'n':
-                    connect.commit()
                     connect.close()
                     break
 
@@ -76,5 +81,3 @@ def update_row():
             print("SQL error occurred. Try again or contact system administrator.")
 
     print("Database has been updated.")
-
-update_row()
