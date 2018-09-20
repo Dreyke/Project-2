@@ -11,6 +11,9 @@ import menu_option_6
 # TODO database should have an ID key and 6 additional product data columns
 # TODO Use various data types and constraints such as Not Null, default values, etc
 
+# TODO part 2
+# TODO create a better menu selection (if time.. this works fine)
+
 print("Pick a menu option")
 menu = int(input(""
                  "1. Create a database\n"
@@ -18,7 +21,8 @@ menu = int(input(""
                  "3. Update data\n"
                  "4. Delete data\n"
                  "5. Display all data\n"
-                 "6. Search for data\n"))
+                 "6. Search for data\n"
+                 "7. Exit"))
 
 if menu == 1:
     menu_option_1.create_db()
@@ -31,6 +35,8 @@ elif menu == 4:
 elif menu == 5:
     menu_option_5.display_data()
 elif menu == 6:
-    pass
+    menu_option_6.search()
+elif menu == 7:
+    print("Exiting menu.")
 else:
-    pass
+    print("Invalid option. Please select a valid menu option.")

@@ -1,13 +1,12 @@
 __author__ = 'Dreyke Boone'
 
-# TODO displays all the rows in the database
-
 import sqlite3
 
 def display_data():
 
-    db_file = 'products_db.sqlite'
+    db_file = 'products_db.sqlite' # name of sqlite database file
 
+    # display all rows in database
     print("Here is all the data from the database\n")
 
     connect = sqlite3.connect(db_file)

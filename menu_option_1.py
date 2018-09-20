@@ -2,8 +2,6 @@ __author__ = 'Dreyke Boone'
 
 import sqlite3
 
-# TODO this menu item creates a database and a table
-
 def create_db():
 
     db_file = 'products_db.sqlite' # name of sqlite database file
@@ -23,9 +21,9 @@ def create_db():
     # creating game products table with 7 columns and setting the first column as the
     c.execute('''CREATE TABLE {tn} 
                 ({cn1} INTEGER PRIMARY KEY,
-                {cn2} VARCHAR(25),
-                {cn3} DOUBLE,
-                {cn4} VARCHAR(25),
+                {cn2} VARCHAR(25) NOT NULL,
+                {cn3} DOUBLE NOT NULL,
+                {cn4} VARCHAR(25) NOT NULL,
                 {cn5} INT,
                 {cn6} VARCHAR(25),
                 {cn7} REAL)'''\
@@ -35,6 +33,7 @@ def create_db():
     connect.commit()
     connect.close()
 
+    # displays list of columns that have been created
     print("Game Products database has been created. The following columns have been added:\n"
           "id\n"
           "Title\n"
