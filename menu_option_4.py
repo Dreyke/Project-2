@@ -4,37 +4,39 @@ __author__ = 'Dreyke Boone'
 
 import sqlite3
 
-db_file = 'products_db.sqlite'
+def delete_row():
 
-row_selection = input("Enter a game title to display information: ")
+    db_file = 'products_db.sqlite'
 
-# connecting to database file
-connect = sqlite3.connect(db_file)
-c = connect.cursor()
+    row_selection = input("Enter a game title to display information: ")
 
-c.execute("SELECT * FROM game_products WHERE title=?", (row_selection,))
+    # connecting to database file
+    connect = sqlite3.connect(db_file)
+    c = connect.cursor()
 
-rows = c.fetchall()
+    c.execute("SELECT * FROM game_products WHERE title=?", (row_selection,))
 
-for row in rows:
-    print(row)
+    rows = c.fetchall()
 
-step = input("Do you want to delete this game information from the database? (Y/N)")
+    for row in rows:
+        print(row)
 
-if step == 'y':
-    warning = input("WARNING!! You are about to delete data from the database! Please confirm you wish to delete this data: Y/N ")
-    if warning == 'y':
+    step = input("Do you want to delete this game information from the database? (Y/N)")
 
-        c.execute("DELETE FROM game_products WHERE title=?", (row_selection,))
-        print("All data related to " + row_selection + " has been deleted.")
+    if step == 'y':
+        warning = input("WARNING!! You are about to delete data from the database! Please confirm you wish to delete this data: Y/N ")
+        if warning == 'y':
 
-        connect.commit()
-        connect.close()
+            c.execute("DELETE FROM game_products WHERE title=?", (row_selection,))
+            print("All data related to " + row_selection + " has been deleted.")
+
+            connect.commit()
+            connect.close()
+
+        else:
+            print("Closing connection to database")
 
     else:
-        print("Closing connection to database")
-
-else:
-    print("No data has been deleted.")
+        print("No data has been deleted.")
 
 

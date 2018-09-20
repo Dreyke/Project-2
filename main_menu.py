@@ -27,9 +27,9 @@ elif menu == 2:
 elif menu == 3:
     menu_option_3.update_row()
 elif menu == 4:
-    pass
+    menu_option_4.delete_row()
 elif menu == 5:
-    pass
+    menu_option_5.display_data()
 elif menu == 6:
     pass
 else:
