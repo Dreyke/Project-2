@@ -4,6 +4,8 @@ import sqlite3
 
 def display_data():
 
+    connect = None
+
     db_file = 'products_db.sqlite' # name of sqlite database file
 
     # display all rows in database
@@ -26,5 +28,8 @@ def display_data():
 
         connect.close()
 
-    except:
-        print("An error has occurred. Please try again.")
+    except sqlite3.Error as e:
+        print("Unable to display table due to error %s" % e)
+
+    finally:
+        connect.close()

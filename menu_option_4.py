@@ -4,6 +4,8 @@ import sqlite3
 
 def delete_row():
 
+    connect = None
+
     db_file = 'products_db.sqlite'  # name of sqlite database file
 
     # get title from user to display related row
@@ -42,7 +44,6 @@ def delete_row():
 
             # if user selects y, than a warning is displayed and they need to confirm they want to delete
             if step == 'y':
-
                 warning = input(
                     "WARNING!! You are about to delete data from the database! This data cannot be restored. Please confirm you wish to delete this data: Y/N ")
                 if warning == 'y':
@@ -50,14 +51,14 @@ def delete_row():
                     c.execute("DELETE FROM game_products WHERE title=?", (row_selection,))
                     print("All data related to " + row_selection + " has been deleted.")
 
-                    connect.commit()
-                    connect.close()
-
                 else:
                     print("Closing connection to database")
-
             else:
                 print("No data has been deleted.")
 
-    except:
-        print("SQL error occurred. Try again or contact system administrator.")
+    except sqlite3.Error as e:
+        print("Error %s when deleting data from table. Please try again" % e)
+
+    finally:
+        connect.commit()
+        connect.close()

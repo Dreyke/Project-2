@@ -4,6 +4,8 @@ import sqlite3
 
 def search():
 
+    connect = None
+
     db_file = 'products_db.sqlite' # name of sqlite database file
 
     # allows user to search for a row based on title
@@ -33,7 +35,8 @@ def search():
                 print("Platforms = ", row[5])
                 print("Release Date = ", row[6])
 
-            connect.close()
+    except sqlite3.Error as e:
+        print("Error %s when gathering data. Please try again" % e)
 
-    except:
-        print("An error has occurred. Try again or contact system administrator.")
+    finally:
+        connect.close()

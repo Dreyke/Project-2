@@ -77,7 +77,8 @@ def update_row():
                     connect.close()
                     break
 
-        except:
-            print("SQL error occurred. Try again or contact system administrator.")
+        except sqlite3.Error as e:
+            print("Error %s when updating data. Please try again" % e)
 
-    print("Database has been updated.")
+        finally:
+            print("Database has been updated.")
